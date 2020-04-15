@@ -8,8 +8,17 @@ const app = express();
 app.use(cors(corsOptions))
 app.use(bodyParser.json());
 
-app.get('/getProducts', (req, res) => {
-    fs.readFile("data/products.json", "utf8", function(err, data) {
+app.get('/todos', (req, res) => {
+    fs.readFile("data/todos.json", "utf8", function(err, data) {
+        if (err) {
+            return res.json(err);
+        }
+        return res.json(data)
+    });
+})
+
+app.post('/todos', (req, res) => {
+    fs.appendFile("data/products.json", "utf8", function(err, data) {
         if (err) {
             return res.json(err);
         }
