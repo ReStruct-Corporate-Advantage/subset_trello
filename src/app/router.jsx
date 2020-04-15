@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom';
 import Loadable from 'react-loadable'
-import PageLoader from './app/components/PageLoader';
+import PageLoader from './components/PageLoader';
 
 export const LoadableHome = Loadable({
-    loader: () => import('./app/pages/Home'),
+    loader: () => import('./pages/Home'),
     loading: PageLoader
 })
 

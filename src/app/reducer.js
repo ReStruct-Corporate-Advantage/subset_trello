@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import homeReducer from './app/pages/Home/reducer'
+import homeReducer from './pages/Home/reducer'
 
 export default combineReducers({
     data: combineReducers({
