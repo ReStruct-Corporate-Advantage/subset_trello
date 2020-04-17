@@ -29,6 +29,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "reselect-immutable-helpers": "^1.2.2",
+    "resolve": "^1.16.0",
+    "resolve-url-loader": "^3.1.1",
     "sass-loader": "8.0.2",
     "styled-components": "^5.1.0"
   },
@@ -36,7 +38,7 @@
     "install": "cd server && npm install",
     "clientstart": "react-scripts start",
     "serverstart": "cd server && npm start",
-    "start": "run-p clientstart serverstart",
+    "start": "npm run clientstart",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

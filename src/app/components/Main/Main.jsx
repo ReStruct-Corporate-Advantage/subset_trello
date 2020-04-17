@@ -1,20 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 // import {DndProvider} from 'react-dnd';
 // import HTML5Backend from 'react-dnd-html5-backend';
 import {BoardHeader, List} from './../';
-import {todos} from './../../config/todos.json';
+// import {todos} from './../../config/todos.json';
 import './Main.component.scss';
 
 const Main = props => {
-  let todos
+  const [todos, setTodos] = useState({})
 
   useEffect(() => {
-    fetch('/todos')
+    fetch('http://localhost:3001/todos')
       .then(res => res.json())
-      .then(data => console.log(JSON.parse(data)))
-  })
-  const todoLists = todos && todos.lists
-  const todoRenders = todoLists && Object.keys(todoLists).map((todo, key) => <List list={todoLists[todo]} index={key + 1} key={key} />)
+      .then(data => {
+        console.log(JSON.parse(data))
+        // todos = JSON.parse(data).todos.lists
+        setTodos(JSON.parse(data).todos.lists)
+      })
+      .catch((err) => console.log("Error: " + err))
+  }, [])
+  const todoRenders = todos && Object.keys(todos).map((todo, key) => <List list={todos[todo]} index={key + 1} key={key} />)
   return (
     <div className="container c-Main">
       <div className="row">
