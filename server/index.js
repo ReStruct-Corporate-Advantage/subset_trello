@@ -18,10 +18,15 @@ app.get('/todos', (req, res) => {
 })
 
 app.post('/todos', (req, res) => {
-    fs.appendFile("data/products.json", "utf8", function(err, data) {
+    fs.readFile("data/todos.json", "utf8", function(err, data) {
         if (err) {
             return res.json(err);
         }
+        // const updateKey = data[res.key];
+        // updateKey
+        fs.writeFile("data/todos.json", "utf8", function(err, data) {
+
+        });
         return res.json(data)
     });
 })
