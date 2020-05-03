@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Aside.component.scss';
 
 const Aside = props => {

@@ -21,6 +21,19 @@
             }
         }
 
+        .c-Card__close-button {
+            margin-left: 0.5rem;
+            color: #666;
+            cursor: pointer;
+            position: absolute;
+            top: 7px;
+            right: 7px;
+
+            &:hover {
+                color: #333;
+            }
+        }
+
         div {
             flex-basis: 100%;
         }

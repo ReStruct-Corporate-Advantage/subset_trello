@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ItemTypes from './../../pages/Home/ItemTypes'
 import {useDrag, useDrop} from 'react-dnd'
 import './Card.component.scss';
+import {Clear} from '@material-ui/icons';
 
 const Card = props => {
   const ref = useRef(null)
@@ -60,8 +61,10 @@ const Card = props => {
     style={{
       opacity: isDragging ? 0.5 : 1,
       cursor: 'move',
+      position: 'relative'
     }}>
-      <div>{card && card.title}</div>
+      <Clear className="c-Card__close-button" fontSize="small" onClick={() => removeCard(index, listId)} />
+      <div style={{marginTop: '10px'}}>{card && card.title}</div>
       <div>{card && card.description}</div>
     </div>
 };

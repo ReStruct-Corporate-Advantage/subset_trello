@@ -82,14 +82,15 @@ const List = props => {
   const addCardToList = (event) => {
     const data = {}
     const form = document.forms['c-List__new-card-form']
-    const inputFields = [...form.getElementsByTagName('textarea')]
-    inputFields && inputFields.forEach((inputField) => {
-      data[inputField.id] = inputField.value && inputField.value.trim()
-    })
-    fetch('https://localhost:3001/todos',
-    {
+    const inputField = [...form.getElementsByTagName('textarea')][0]
+    // inputFields && inputFields.forEach((inputField) => {
+    //   data[inputField.id] = inputField.value && inputField.value.trim()
+    // })
 
-    })
+    const newState = [...cardsInState, {title: "test title", description: inputField.value, activity: []}]
+    setCardsInState(newState)
+    setAddingCard(false)
+    inputField.value = ""
   }
   const EmptyList = () => {
     return <div className="col-3 c-Main__list-col">
@@ -98,7 +99,7 @@ const List = props => {
           <form id="c-List__emptyList__add-list" className="c-List__empty-list__new-list-form" style={{height: "100%", width: "100%"}}>
             <input type="text" className="c-List__empty-list__new-list-textbox" placeholder="Enter list title" />
             <span className="c-List__empty-list__new-list-button"><button type="button" value="Add">Add List</button></span>
-          </form> :  <AddListButton addhandler={setAddingList} onClick={() => setAddingList(false)}/>
+          </form> :  <AddListButton addhandler={() => setAddingList(true)} />
         }
       </div>
     </div>
@@ -118,7 +119,7 @@ const List = props => {
                 <textarea type="text" className="c-List__new-card-textbox" placeholder="Enter a title for this card" />
                 <span className="c-List__new-card-button"><button type="button" className="btn btn-success" value="Add Card" onClick={addCardToList}>Add Card</button></span>
                 <Clear fontSize="medium" style={{marginLeft: '0.5rem', color: '#ccc', cursor: 'pointer'}} onClick={() => setAddingCard(false)} />
-              </form> : <div className="c-List__add-card-button"><AddCardButton addhandler={setAddingCard}  onClick={() => setAddingCard(false)} /></div>
+              </form> : <div className="c-List__add-card-button"><AddCardButton addhandler={setAddingCard} /></div>
             }
           </div> :  <EmptyList />
         }
